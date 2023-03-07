@@ -1,12 +1,10 @@
-on: [pull_request, workflow_dispatch]
+on: [pull_request]
 
 jobs:
-  self_test_job:
+  check_dependencies:
     runs-on: ubuntu-latest
-    name: self test
+    name: Check Dependencies
     steps:
-    - uses: actions/checkout@v2
-    - name: check dependencies
-      uses: ./
+    - uses: gregsdennis/dependencies-action@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
